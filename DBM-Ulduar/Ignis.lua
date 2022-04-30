@@ -27,6 +27,7 @@ local timerScorchCooldown		= mod:NewCDTimer(25, 63473, nil, nil, nil, 5)
 local timerScorchCast			= mod:NewCastTimer(3, 63473)
 local timerSlagPot				= mod:NewTargetTimer(10, 63477, nil, nil, nil, 3)
 local timerAchieve				= mod:NewAchievementTimer(240, 2930)
+local enrageTimer				= mod:NewBerserkTimer(480)
 
 mod.vb.ConstructCount = 0
 
@@ -42,6 +43,7 @@ function mod:OnCombatStart(delay)
 	end
 	timerScorchCooldown:Start(12-delay)
 	timerFlameJetsCooldown:Start(29)
+	enrageTimer:Start(-delay)
 end
 
 function mod:SPELL_CAST_START(args)
